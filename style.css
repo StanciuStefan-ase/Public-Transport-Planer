@@ -1,0 +1,21 @@
+.my-navbar {
+  background-color: #067715 !important; /* Purple */
+}
+
+.my-navbar .nav-link {
+  color: white !important;
+}
+
+.my-navbar .nav-link:hover {
+  color: #dcd6f7 !important;
+}
+
+.my-navbar .navbar-brand {
+  color: white !important;
+  font-weight: bold;
+}
+
+body {
+  background: linear-gradient(135deg, #a5ec8f, #b3eb8d);
+  color: white; 
+}
