@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transit Route Finder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚇 Transport Public București</h1>
+            <p>Găsește cele mai bune rute cu metroul, autobuzul și tramvaiul</p>
+            <div class="city-badge">📍 București, România</div>
+        </div>
+
+        <div class="search-section">
+            <div class="input-group">
+                <label for="origin">De la (Locația ta)</label>
+                <div class="input-wrapper">
+                    <input type="text" id="origin" placeholder="Ex: Piața Victoriei, Gara de Nord">
+                    <span class="location-icon" id="locationBtn" title="Folosește locația curentă">📍</span>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="destination">La (Destinația)</label>
+                <div class="input-wrapper">
+                    <input type="text" id="destination" placeholder="Ex: Piața Unirii, Obor">
+                </div>
+            </div>
+
+            <div class="audio-controls">
+                <label>
+                    <input type="checkbox" id="audioNotifications" checked>
+                    Activează notificări audio
+                </label>
+            </div>
+
+            <button class="btn-search" id="searchBtn">Caută Rute</button>
+        </div>
+
+        <!-- Canvas for route visualization -->
+        <div class="canvas-section" id="canvasSection">
+            <h3>Route Visualization</h3>
+            <canvas id="routeCanvas" width="800" height="400"></canvas>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Searching for routes...</p>
+        </div>
+
+        <div class="results-section" id="results">
+            <!-- Results will be inserted here -->
+        </div>
+
+        <!-- Video Section for promotional content -->
+        <div class="video-section" id="videoSection">
+            <h3>How to Use Public Transport</h3>
+            <video id="instructionVideo" controls width="100%">
+                <source src="transit-guide.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="video-caption">Learn how to navigate our public transport system</p>
+        </div>
+    </div>
+
+    <!-- Audio elements for notifications -->
+    <audio id="searchSound" preload="auto">
+        <source src="search.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="successSound" preload="auto">
+        <source src="success.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
