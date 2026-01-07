@@ -1,303 +1,326 @@
-// Bucharest Public Transport Data
-const transitData = {
-    routes: [
-        {
-            id: 1,
-            name: "M1 (Metrou)",
-            type: "metro",
-            duration: 35,
-            distance: 16.7,
-            frequency: 5,
-            nextTimes: getCurrentTimes(5),
-            color: "#FFD700",
-            coordinates: [
-                { x: 50, y: 200 },
-                { x: 120, y: 180 },
-                { x: 190, y: 160 },
-                { x: 260, y: 150 },
-                { x: 330, y: 145 },
-                { x: 400, y: 150 },
-                { x: 470, y: 160 },
-                { x: 540, y: 180 },
-                { x: 610, y: 200 },
-                { x: 680, y: 220 },
-                { x: 750, y: 240 }
-            ],
-            stops: [
-                { name: "Pantelimon", time: "0 min" },
-                { name: "Republica", time: "3 min" },
-                { name: "Obor", time: "6 min" },
-                { name: "Ștefan cel Mare", time: "9 min" },
-                { name: "Piața Victoriei", time: "13 min" },
-                { name: "Gara de Nord", time: "17 min" },
-                { name: "Crângași", time: "21 min" },
-                { name: "Petrache Poenaru", time: "25 min" },
-                { name: "Preciziei", time: "28 min" },
-                { name: "Păcii", time: "31 min" },
-                { name: "Dristor", time: "35 min" }
-            ]
-        },
-        {
-            id: 2,
-            name: "M2 (Metrou)",
-            type: "metro",
-            duration: 28,
-            distance: 14.2,
-            frequency: 6,
-            nextTimes: getCurrentTimes(6),
-            color: "#0066CC",
-            coordinates: [
-                { x: 50, y: 350 },
-                { x: 140, y: 320 },
-                { x: 230, y: 290 },
-                { x: 320, y: 260 },
-                { x: 410, y: 240 },
-                { x: 500, y: 230 },
-                { x: 590, y: 240 },
-                { x: 680, y: 260 },
-                { x: 750, y: 290 }
-            ],
-            stops: [
-                { name: "Pipera", time: "0 min" },
-                { name: "Aviatorilor", time: "3 min" },
-                { name: "Piața Victoriei", time: "7 min" },
-                { name: "Piața Romană", time: "10 min" },
-                { name: "Universitate", time: "13 min" },
-                { name: "Piața Unirii", time: "16 min" },
-                { name: "Tineretului", time: "20 min" },
-                { name: "Dimitrie Leonida", time: "24 min" },
-                { name: "Berceni", time: "28 min" }
-            ]
-        },
-        {
-            id: 3,
-            name: "M3 (Metrou)",
-            type: "metro",
-            duration: 22,
-            distance: 11.8,
-            frequency: 7,
-            nextTimes: getCurrentTimes(7),
-            color: "#FF0000",
-            coordinates: [
-                { x: 400, y: 350 },
-                { x: 430, y: 320 },
-                { x: 450, y: 280 },
-                { x: 460, y: 240 },
-                { x: 460, y: 200 },
-                { x: 450, y: 160 },
-                { x: 430, y: 120 },
-                { x: 400, y: 80 }
-            ],
-            stops: [
-                { name: "Anghel Saligny", time: "0 min" },
-                { name: "Nicolae Grigorescu", time: "3 min" },
-                { name: "Dristor", time: "6 min" },
-                { name: "Piața Unirii", time: "10 min" },
-                { name: "Eroilor", time: "13 min" },
-                { name: "Politehnica", time: "16 min" },
-                { name: "Lujerului", time: "19 min" },
-                { name: "Preciziei", time: "22 min" }
-            ]
-        },
-        {
-            id: 4,
-            name: "Bus 133",
-            type: "bus",
-            duration: 40,
-            distance: 12.5,
-            frequency: 10,
-            nextTimes: getCurrentTimes(10),
-            color: "#1976d2",
-            coordinates: [
-                { x: 100, y: 320 },
-                { x: 180, y: 300 },
-                { x: 260, y: 280 },
-                { x: 340, y: 270 },
-                { x: 420, y: 265 },
-                { x: 500, y: 270 },
-                { x: 580, y: 280 },
-                { x: 660, y: 300 }
-            ],
-            stops: [
-                { name: "Piața Presei Libere", time: "0 min" },
-                { name: "Șoseaua Kiseleff", time: "5 min" },
-                { name: "Piața Victoriei", time: "10 min" },
-                { name: "Calea Victoriei", time: "15 min" },
-                { name: "Piața Universității", time: "20 min" },
-                { name: "Piața Unirii", time: "25 min" },
-                { name: "Bulevardul Unirii", time: "30 min" },
-                { name: "Piața Alba Iulia", time: "35 min" },
-                { name: "Piața Sudului", time: "40 min" }
-            ]
-        },
-        {
-            id: 5,
-            name: "Bus 783",
-            type: "bus",
-            duration: 35,
-            distance: 11.2,
-            frequency: 12,
-            nextTimes: getCurrentTimes(12),
-            color: "#2196F3",
-            coordinates: [
-                { x: 80, y: 280 },
-                { x: 160, y: 260 },
-                { x: 240, y: 245 },
-                { x: 320, y: 240 },
-                { x: 400, y: 245 },
-                { x: 480, y: 260 },
-                { x: 560, y: 280 },
-                { x: 640, y: 300 }
-            ],
-            stops: [
-                { name: "Gara de Nord", time: "0 min" },
-                { name: "Buzești", time: "5 min" },
-                { name: "Piața Romană", time: "10 min" },
-                { name: "Piața Universității", time: "15 min" },
-                { name: "Bulevardul Carol I", time: "20 min" },
-                { name: "Piața Muncii", time: "25 min" },
-                { name: "Parcul IOR", time: "30 min" },
-                { name: "Pantelimon", time: "35 min" }
-            ]
-        },
-        {
-            id: 6,
-            name: "Tramvai 41",
-            type: "tram",
-            duration: 45,
-            distance: 14.8,
-            frequency: 8,
-            nextTimes: getCurrentTimes(8),
-            color: "#f57c00",
-            coordinates: [
-                { x: 70, y: 150 },
-                { x: 150, y: 140 },
-                { x: 230, y: 135 },
-                { x: 310, y: 140 },
-                { x: 390, y: 150 },
-                { x: 470, y: 165 },
-                { x: 550, y: 180 },
-                { x: 630, y: 200 },
-                { x: 710, y: 220 }
-            ],
-            stops: [
-                { name: "Gara de Nord", time: "0 min" },
-                { name: "Piața Victoriei", time: "8 min" },
-                { name: "Piața Romană", time: "13 min" },
-                { name: "Piața Universității", time: "18 min" },
-                { name: "Piața Unirii", time: "23 min" },
-                { name: "Parcul Carol", time: "28 min" },
-                { name: "Piața Muncii", time: "33 min" },
-                { name: "Mihai Bravu", time: "38 min" },
-                { name: "Vitan", time: "45 min" }
-            ]
-        },
-        {
-            id: 7,
-            name: "Tramvai 1",
-            type: "tram",
-            duration: 50,
-            distance: 16.5,
-            frequency: 10,
-            nextTimes: getCurrentTimes(10),
-            color: "#FF6F00",
-            coordinates: [
-                { x: 50, y: 100 },
-                { x: 140, y: 110 },
-                { x: 230, y: 120 },
-                { x: 320, y: 125 },
-                { x: 410, y: 120 },
-                { x: 500, y: 110 },
-                { x: 590, y: 100 },
-                { x: 680, y: 95 },
-                { x: 750, y: 90 }
-            ],
-            stops: [
-                { name: "Piața Presei Libere", time: "0 min" },
-                { name: "Ștefan cel Mare", time: "8 min" },
-                { name: "Obor", time: "13 min" },
-                { name: "Piața Iancului", time: "18 min" },
-                { name: "Parcul IOR", time: "25 min" },
-                { name: "Titan", time: "32 min" },
-                { name: "Costin Georgian", time: "38 min" },
-                { name: "Republica", time: "43 min" },
-                { name: "Pantelimon", time: "50 min" }
-            ]
-        }
-    ]
+// bus data
+const LOCATIONS = {
+    'piata-victoriei': { 
+        name: 'Piata Victoriei', 
+        x: 400, y: 150,
+        lat: 44.4518, lng: 26.0833,
+        metro: ['M1', 'M2'],
+        buses: ['133', '783', '131', '335'],
+        trams: ['11']
+    },
+    'gara-de-nord': { 
+        name: 'Gara de Nord', 
+        x: 350, y: 180,
+        lat: 44.4458, lng: 26.0750,
+        metro: ['M1'],
+        buses: ['783', '86', '131', '205'],
+        trams: ['41']
+    },
+    'piata-unirii': { 
+        name: 'Piata Unirii', 
+        x: 400, y: 280,
+        lat: 44.4268, lng: 26.1025,
+        metro: ['M1', 'M2', 'M3'],
+        buses: ['133', '104', '123', '300'],
+        trams: ['21', '25']
+    },
+    'piata-romana': { 
+        name: 'Piata Romana', 
+        x: 420, y: 200,
+        lat: 44.4443, lng: 26.0979,
+        metro: ['M2'],
+        buses: ['783', '331', '368'],
+        trams: ['1', '10']
+    },
+    'universitate': { 
+        name: 'Universitate', 
+        x: 410, y: 250,
+        lat: 44.4363, lng: 26.1009,
+        metro: ['M2'],
+        buses: ['133', '104', '205', '336'],
+        trams: ['1', '10', '19']
+    },
+    'obor': { 
+        name: 'Obor', 
+        x: 500, y: 230,
+        lat: 44.4314, lng: 26.1267,
+        metro: ['M1'],
+        buses: ['181', '243', '330'],
+        trams: ['1', '16', '36']
+    },
+    'pantelimon': { 
+        name: 'Pantelimon', 
+        x: 630, y: 240,
+        lat: 44.4365, lng: 26.1742,
+        metro: ['M1'],
+        buses: ['330', '243', '104'],
+        trams: ['1']
+    },
+    'pipera': { 
+        name: 'Pipera', 
+        x: 480, y: 80,
+        lat: 44.4902, lng: 26.1197,
+        metro: ['M2'],
+        buses: ['135', '301', '205'],
+        trams: []
+    },
+    'berceni': { 
+        name: 'Berceni', 
+        x: 400, y: 420,
+        lat: 44.3771, lng: 26.1026,
+        metro: ['M2'],
+        buses: ['136', '385', '232'],
+        trams: []
+    },
+    'militari': { 
+        name: 'Militari', 
+        x: 150, y: 260,
+        lat: 44.4387, lng: 26.0305,
+        metro: [],
+        buses: ['137', '178', '336'],
+        trams: []
+    },
+    'drumul-taberei': { 
+        name: 'Drumul Taberei', 
+        x: 200, y: 300,
+        lat: 44.4184, lng: 26.0450,
+        metro: [],
+        buses: ['104', '300', '385'],
+        trams: []
+    },
+    'titan': { 
+        name: 'Titan', 
+        x: 550, y: 320,
+        lat: 44.4234, lng: 26.1579,
+        metro: [],
+        buses: ['330', '345', '504'],
+        trams: ['1', '40']
+    },
+    'dristor': { 
+        name: 'Dristor', 
+        x: 480, y: 350,
+        lat: 44.4127, lng: 26.1443,
+        metro: ['M1', 'M3'],
+        buses: ['181', '104', '330'],
+        trams: []
+    },
+    'eroilor': { 
+        name: 'Eroilor', 
+        x: 350, y: 320,
+        lat: 44.4315, lng: 26.0862,
+        metro: ['M3'],
+        buses: ['123', '385', '336'],
+        trams: ['21', '32']
+    },
+    'aviatorilor': { 
+        name: 'Aviatorilor', 
+        x: 450, y: 120,
+        lat: 44.4697, lng: 26.0856,
+        metro: ['M2'],
+        buses: ['301', '131', '335'],
+        trams: []
+    },
+    'piata-presei': { 
+        name: 'Piata Presei Libere', 
+        x: 400, y: 100,
+        lat: 44.4821, lng: 26.0833,
+        metro: [],
+        buses: ['133', '331', '282'],
+        trams: ['1']
+    },
+    'basarab': { 
+        name: 'Basarab', 
+        x: 320, y: 160,
+        lat: 44.4479, lng: 26.0758,
+        metro: [],
+        buses: ['783', '86', '232'],
+        trams: []
+    },
+    'politehnica': { 
+        name: 'Politehnica', 
+        x: 280, y: 300,
+        lat: 44.4392, lng: 26.0493,
+        metro: ['M3'],
+        buses: ['137', '336', '385'],
+        trams: []
+    },
+    'lujerului': { 
+        name: 'Lujerului', 
+        x: 240, y: 280,
+        lat: 44.4341, lng: 26.0354,
+        metro: ['M3'],
+        buses: ['178', '137', '336'],
+        trams: []
+    },
+    'crangasi': { 
+        name: 'Crangasi', 
+        x: 280, y: 200,
+        lat: 44.4656, lng: 26.0522,
+        metro: ['M1'],
+        buses: ['178', '330', '385'],
+        trams: ['11', '5']
+    }
 };
 
-// Function to generate current times based on frequency
-function getCurrentTimes(frequency) {
-    const times = [];
-    const now = new Date();
-    
-    for (let i = 0; i < 5; i++) {
-        const futureTime = new Date(now.getTime() + (i * frequency * 60000));
-        const hours = String(futureTime.getHours()).padStart(2, '0');
-        const minutes = String(futureTime.getMinutes()).padStart(2, '0');
-        times.push(`${hours}:${minutes}`);
-    }
-    
-    return times;
-}
 
-// Audio Context for generating notification sounds
+const PREDEFINED_ROUTES = {
+    'piata-victoriei-piata-unirii': {
+        routes: [
+            { type: 'metro', line: 'M2', duration: 6, stops: ['Piata Victoriei', 'Piata Romana', 'Universitate', 'Piata Unirii'] },
+            { type: 'bus', line: '133', duration: 15, stops: ['Piata Victoriei', 'Calea Victoriei', 'Universitate', 'Piata Unirii'] }
+        ]
+    },
+    'gara-de-nord-piata-unirii': {
+        routes: [
+            { type: 'metro', line: 'M1', duration: 8, stops: ['Gara de Nord', 'Piata Victoriei', 'Universitate', 'Piata Unirii'] },
+            { type: 'bus', line: '783', duration: 12, stops: ['Gara de Nord', 'Universitate', 'Piata Unirii'] }
+        ]
+    },
+    'obor-piata-victoriei': {
+        routes: [
+            { type: 'metro', line: 'M1', duration: 8, stops: ['Obor', 'Stefan cel Mare', 'Piata Victoriei'] },
+            { type: 'tram', line: '1', duration: 18, stops: ['Obor', 'Stefan cel Mare', 'Piata Victoriei'] }
+        ]
+    },
+    'pipera-piata-unirii': {
+        routes: [
+            { type: 'metro', line: 'M2', duration: 15, stops: ['Pipera', 'Aviatorilor', 'Piata Victoriei', 'Piata Romana', 'Universitate', 'Piata Unirii'] },
+            { type: 'bus', line: '135', duration: 25, stops: ['Pipera', 'Aviatorilor', 'Piata Victoriei', 'Piata Unirii'] }
+        ]
+    }
+};
+
+
 let audioContext;
 let audioEnabled = true;
+let currentRoute = null;
 
-// Initialize
+// start
 document.addEventListener('DOMContentLoaded', function() {
-    // Set up event listeners
-    document.getElementById('locationBtn').addEventListener('click', useCurrentLocation);
-    document.getElementById('searchBtn').addEventListener('click', searchRoutes);
+    document.getElementById('searchBtn').addEventListener('click', planRoute);
+    document.getElementById('useLocationBtn').addEventListener('click', useMyLocation);
     document.getElementById('audioNotifications').addEventListener('change', function(e) {
         audioEnabled = e.target.checked;
     });
 
-    // Enter key support
-    document.getElementById('origin').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') searchRoutes();
-    });
-    document.getElementById('destination').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') searchRoutes();
-    });
-
-    // Initialize Audio Context
     try {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
     } catch (e) {
         console.log('Web Audio API not supported');
     }
 
-    // Show video section
     document.getElementById('videoSection').classList.add('active');
+    console.log('Bucharest Transport Planner initialized');
 });
 
-// Geolocation API - Use current location
-function useCurrentLocation() {
-    if (navigator.geolocation) {
-        document.getElementById('origin').value = "Getting your location...";
-        
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const lat = position.coords.latitude.toFixed(4);
-                const lon = position.coords.longitude.toFixed(4);
-                document.getElementById('origin').value = `Current Location (${lat}, ${lon})`;
-                playNotificationSound('success');
-            },
-            (error) => {
-                alert("Unable to get your location. Please enter it manually.");
-                document.getElementById('origin').value = "";
-                playNotificationSound('error');
-            }
-        );
-    } else {
-        alert("Geolocation is not supported by your browser.");
-    }
+// function for the calculation of the distance
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; 
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c;
 }
 
-// Audio API - Play notification sounds
+// nearest location function
+function findNearestLocation(userLat, userLng) {
+    let nearestLocation = null;
+    let minDistance = Infinity;
+    
+    for (const [key, location] of Object.entries(LOCATIONS)) {
+        const distance = calculateDistance(userLat, userLng, location.lat, location.lng);
+        
+        if (distance < minDistance) {
+            minDistance = distance;
+            nearestLocation = { key, location, distance };
+        }
+    }
+    
+    return nearestLocation;
+}
+
+// current location of use
+function useMyLocation() {
+    const button = document.getElementById('useLocationBtn');
+    const originSelect = document.getElementById('origin');
+    
+    if (!navigator.geolocation) {
+        alert('Geolocation is not supported by your browser!');
+        playNotificationSound('error');
+        return;
+    }
+    
+    // disable button in loading
+    button.disabled = true;
+    button.textContent = '⏳ Getting location...';
+    playNotificationSound('search');
+    
+    navigator.geolocation.getCurrentPosition(
+        function(position) {
+            const userLat = position.coords.latitude;
+            const userLng = position.coords.longitude;
+            
+            console.log(`User location: ${userLat}, ${userLng}`);
+            
+           
+            const nearest = findNearestLocation(userLat, userLng);
+            
+            if (nearest) {
+               
+                originSelect.value = nearest.key;
+                
+              
+                const distanceKm = nearest.distance.toFixed(2);
+                alert(`✅ Nearest station: ${nearest.location.name} (${distanceKm} km away)`);
+                
+                playNotificationSound('success');
+            } else {
+                alert('Could not find a nearby location!');
+                playNotificationSound('error');
+            }
+            
+            // re enable button
+            button.disabled = false;
+            button.textContent = '📍 My Location';
+        },
+        function(error) {
+            console.error('Error getting location:', error);
+            
+            let errorMessage = 'Could not get your location. ';
+            
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    errorMessage += 'Permission denied. Please allow location access in browser settings.';
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    errorMessage += 'Location information unavailable.';
+                    break;
+                case error.TIMEOUT:
+                    errorMessage += 'Timeout - please try again.';
+                    break;
+                default:
+                    errorMessage += 'An unknown error occurred.';
+            }
+            
+            alert(errorMessage);
+            playNotificationSound('error');
+            
+            
+            button.disabled = false;
+            button.textContent = '📍 My Location';
+        },
+        {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
+        }
+    );
+}
+
+// audio api
 function playNotificationSound(type) {
     if (!audioEnabled || !audioContext) return;
 
@@ -308,17 +331,14 @@ function playNotificationSound(type) {
     gainNode.connect(audioContext.destination);
 
     if (type === 'success') {
-        // Success sound: ascending tones
-        oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime); // C5
-        oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // E5
-        oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2); // G5
+        oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime);
+        oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1);
+        oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2);
     } else if (type === 'error') {
-        // Error sound: descending tone
         oscillator.frequency.setValueAtTime(400, audioContext.currentTime);
         oscillator.frequency.setValueAtTime(200, audioContext.currentTime + 0.2);
     } else {
-        // Default search sound
-        oscillator.frequency.setValueAtTime(440, audioContext.currentTime); // A4
+        oscillator.frequency.setValueAtTime(440, audioContext.currentTime);
     }
 
     oscillator.type = 'sine';
@@ -330,102 +350,189 @@ function playNotificationSound(type) {
     oscillator.stop(audioContext.currentTime + 0.3);
 }
 
-// Search routes
-function searchRoutes() {
-    const origin = document.getElementById('origin').value.trim();
-    const destination = document.getElementById('destination').value.trim();
+// route planning function
+function planRoute() {
+    const origin = document.getElementById('origin').value;
+    const destination = document.getElementById('destination').value;
 
     if (!origin || !destination) {
-        alert("Please enter both origin and destination.");
+        alert('Please select starting point and destination!');
         playNotificationSound('error');
         return;
     }
 
-    // Play search sound
+    if (origin === destination) {
+        alert('Starting point and destination are the same!');
+        playNotificationSound('error');
+        return;
+    }
+
     playNotificationSound('search');
 
-    // Show loading
     document.getElementById('loading').classList.add('active');
     document.getElementById('results').classList.remove('active');
     document.getElementById('canvasSection').classList.remove('active');
 
-    // Simulate API call delay
     setTimeout(() => {
-        displayResults();
-        drawRouteVisualization();
+        displayRoute(origin, destination);
         playNotificationSound('success');
-    }, 1500);
+    }, 1200);
 }
 
-// Display results
-function displayResults() {
-    const resultsSection = document.getElementById('results');
+// display route information
+function displayRoute(originKey, destKey) {
     const loading = document.getElementById('loading');
+    const resultsSection = document.getElementById('results');
     
     loading.classList.remove('active');
     resultsSection.classList.add('active');
-
-    let html = '';
+    const originLoc = LOCATIONS[originKey];
+    const destLoc = LOCATIONS[destKey];
+    const routeKey1 = `${originKey}-${destKey}`;
+    const routeKey2 = `${destKey}-${originKey}`;
     
-    transitData.routes.forEach(route => {
-        html += `
-            <div class="route-card">
-                <div class="route-header">
-                    <div class="route-name">${route.name}</div>
-                    <div class="route-type ${route.type}">${route.type.toUpperCase()}</div>
-                </div>
-                
-                <div class="route-info">
-                    <div class="info-item">
-                        ⏱️ <span>${route.duration} min</span>
-                    </div>
-                    <div class="info-item">
-                        📏 <span>${route.distance} km</span>
-                    </div>
-                    <div class="info-item">
-                        🔄 <span>Every ${route.frequency} min</span>
-                    </div>
-                </div>
-                
-                <div class="schedule">
-                    <div class="schedule-label">Next departures:</div>
-                    <div class="times">
-                        ${route.nextTimes.map(time => `<div class="time-chip">${time}</div>`).join('')}
-                    </div>
-                </div>
-                
-                <button class="stops-toggle" onclick="toggleStops(${route.id})">
-                    View Stops & Timeline ▼
-                </button>
-                
-                <div class="stops-list" id="stops-${route.id}">
-                    ${route.stops.map(stop => `
-                        <div class="stop-item">
-                            <div class="stop-name">🚏 ${stop.name}</div>
-                            <div class="stop-time">${stop.time}</div>
-                        </div>
-                    `).join('')}
-                </div>
+    let routeData = PREDEFINED_ROUTES[routeKey1] || PREDEFINED_ROUTES[routeKey2];
+    
+    
+    if (!routeData) {
+        routeData = generateApproximateRoute(originLoc, destLoc);
+    }
+
+    currentRoute = {
+        origin: originLoc,
+        destination: destLoc,
+        routes: routeData.routes
+    };
+
+    let html = `
+        <div style="padding: 20px; background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%); 
+                    margin-bottom: 20px; border-radius: 15px; border-left: 5px solid #667eea;">
+            <h3 style="margin: 0 0 10px 0; color: #333;">📍 Planned Route</h3>
+            <div style="font-size: 16px; color: #555;">
+                <strong>From:</strong> ${originLoc.name} 
+                <span style="color: #667eea; margin: 0 10px;">→</span> 
+                <strong>To:</strong> ${destLoc.name}
             </div>
-        `;
+        </div>
+    `;
+
+    routeData.routes.forEach((route, index) => {
+        html += createRouteCard(route, index + 1);
     });
 
     resultsSection.innerHTML = html;
+    drawRouteOnCanvas();
 }
 
-// Canvas API - Draw route visualization
-function drawRouteVisualization() {
+
+function generateApproximateRoute(origin, dest) {
+    const routes = [];
+    
+  
+    const commonMetro = origin.metro.filter(line => dest.metro.includes(line));
+    if (commonMetro.length > 0) {
+        routes.push({
+            type: 'metro',
+            line: commonMetro[0],
+            duration: Math.floor(Math.random() * 10) + 10,
+            stops: [origin.name, '...', dest.name]
+        });
+    }
+    
+    
+    if (origin.buses.length > 0) {
+        routes.push({
+            type: 'bus',
+            line: origin.buses[0],
+            duration: Math.floor(Math.random() * 15) + 15,
+            stops: [origin.name, '...', dest.name]
+        });
+    }
+    
+ 
+    if (origin.trams.length > 0) {
+        routes.push({
+            type: 'tram',
+            line: origin.trams[0],
+            duration: Math.floor(Math.random() * 20) + 20,
+            stops: [origin.name, '...', dest.name]
+        });
+    }
+    
+   
+    if (routes.length === 0) {
+        routes.push({
+            type: 'bus',
+            line: '133',
+            duration: 25,
+            stops: [origin.name, 'Transfer', dest.name]
+        });
+    }
+    
+    return { routes };
+}
+
+
+function createRouteCard(route, index) {
+    const icons = {
+        'metro': '🚇',
+        'bus': '🚌',
+        'tram': '🚊'
+    };
+    
+    const colors = {
+        'metro': '#0066CC',
+        'bus': '#2196F3',
+        'tram': '#FF6F00'
+    };
+    
+    const typeNames = {
+        'metro': 'METRO',
+        'bus': 'BUS',
+        'tram': 'TRAM'
+    };
+    
+    const icon = icons[route.type] || '🚌';
+    const color = colors[route.type] || '#2196F3';
+    const typeName = typeNames[route.type] || 'BUS';
+
+    return `
+        <div class="route-card" style="border-left: 5px solid ${color}">
+            <div class="route-header">
+                <div class="route-name">${icon} ${typeName} ${route.line}</div>
+                <div class="route-type" style="background: ${color}20; color: ${color}">${typeName}</div>
+            </div>
+            
+            <div class="route-info">
+                <div class="info-item">
+                     <span>${route.duration} min</span>
+                </div>
+                <div class="info-item">
+                    <span>Line ${route.line}</span>
+                </div>
+                <div class="info-item">
+                    <span>Direct</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// canvas api
+function drawRouteOnCanvas() {
     const canvasSection = document.getElementById('canvasSection');
     const canvas = document.getElementById('routeCanvas');
     const ctx = canvas.getContext('2d');
 
     canvasSection.classList.add('active');
-
-    // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw grid background
-    ctx.strokeStyle = '#f0f0f0';
+  
+    ctx.fillStyle = '#f8f9fa';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  
+    ctx.strokeStyle = '#e0e0e0';
     ctx.lineWidth = 1;
     for (let i = 0; i < canvas.width; i += 50) {
         ctx.beginPath();
@@ -440,108 +547,84 @@ function drawRouteVisualization() {
         ctx.stroke();
     }
 
-    // Draw title
-    ctx.fillStyle = '#333';
-    ctx.font = 'bold 18px Arial';
-    ctx.fillText('Harta Rute Transport Public București', 20, 30);
     
-    ctx.font = '12px Arial';
-    ctx.fillStyle = '#666';
-    ctx.fillText('(Metrou, Autobuze și Tramvaie)', 20, 50);
+    ctx.fillStyle = '#333';
+    ctx.font = 'bold 20px Arial';
+    ctx.fillText('Bucharest Map - Planned Route', 20, 35);
 
-    // Draw each route
-    transitData.routes.forEach((route, index) => {
-        // Draw route line
-        ctx.strokeStyle = route.color;
-        ctx.lineWidth = 4;
+    if (!currentRoute) return;
+
+    const origin = currentRoute.origin;
+    const dest = currentRoute.destination;
+
+ 
+    ctx.fillStyle = '#ccc';
+    ctx.font = '10px Arial';
+    Object.values(LOCATIONS).forEach(loc => {
         ctx.beginPath();
-        
-        route.coordinates.forEach((point, i) => {
-            if (i === 0) {
-                ctx.moveTo(point.x, point.y);
-            } else {
-                ctx.lineTo(point.x, point.y);
-            }
-        });
-        
-        ctx.stroke();
-
-        // Draw stops as circles
-        route.coordinates.forEach((point, i) => {
-            ctx.fillStyle = route.color;
-            ctx.beginPath();
-            ctx.arc(point.x, point.y, 6, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Draw stop border
-            ctx.strokeStyle = '#fff';
-            ctx.lineWidth = 2;
-            ctx.stroke();
-        });
-
-        // Draw route label
-        const lastPoint = route.coordinates[route.coordinates.length - 1];
-        ctx.fillStyle = route.color;
-        ctx.font = 'bold 12px Arial';
-        ctx.fillText(route.name, lastPoint.x + 15, lastPoint.y + 5);
+        ctx.arc(loc.x, loc.y, 3, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillText(loc.name, loc.x + 8, loc.y + 3);
     });
 
-    // Draw legend
+    ctx.strokeStyle = '#667eea';
+    ctx.lineWidth = 6;
+    ctx.setLineDash([]);
+    ctx.beginPath();
+    ctx.moveTo(origin.x, origin.y);
+    ctx.lineTo(dest.x, dest.y);
+    ctx.stroke();
+
+    ctx.fillStyle = '#4CAF50';
+    ctx.beginPath();
+    ctx.arc(origin.x, origin.y, 12, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    ctx.fillStyle = '#f44336';
+    ctx.beginPath();
+    ctx.arc(dest.x, dest.y, 12, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    ctx.fillStyle = '#333';
+    ctx.font = 'bold 14px Arial';
+    ctx.fillText(origin.name, origin.x - 30, origin.y - 20);
+    ctx.fillText(dest.name, dest.x - 30, dest.y + 30);
+
+    animateVehicle(ctx, origin, dest);
+
     ctx.fillStyle = '#333';
     ctx.font = '12px Arial';
-    ctx.fillText('Start: ●  Stops: ●  End: ●', 20, canvas.height - 20);
-
-    // Add animation effect
-    animateRoutes(ctx, canvas);
+    ctx.fillText('Start    Destination    ━ Route', 20, canvas.height - 20);
 }
 
-// Animate routes on canvas
-function animateRoutes(ctx, canvas) {
+function animateVehicle(ctx, origin, dest) {
     let progress = 0;
-    const animationSpeed = 0.005;
+    const speed = 0.01;
 
     function animate() {
         if (progress >= 1) return;
 
-        progress += animationSpeed;
+        progress += speed;
+        const x = origin.x + (dest.x - origin.x) * progress;
+        const y = origin.y + (dest.y - origin.y) * progress;
 
-        transitData.routes.forEach(route => {
-            const currentIndex = Math.floor(progress * (route.coordinates.length - 1));
-            if (currentIndex < route.coordinates.length - 1) {
-                const point = route.coordinates[currentIndex];
-                
-                // Draw animated vehicle
-                ctx.fillStyle = route.color;
-                ctx.beginPath();
-                ctx.arc(point.x, point.y, 8, 0, Math.PI * 2);
-                ctx.fill();
-                
-                // Draw glow effect
-                ctx.fillStyle = route.color + '30';
-                ctx.beginPath();
-                ctx.arc(point.x, point.y, 12, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        });
+        ctx.fillStyle = '#FFD700';
+        ctx.beginPath();
+        ctx.arc(x, y, 10, 0, Math.PI * 2);
+        ctx.fill();
 
-        if (progress < 1) {
-            requestAnimationFrame(animate);
-        }
+        ctx.strokeStyle = '#FF6F00';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        requestAnimationFrame(animate);
     }
 
     animate();
-}
-
-// Toggle stops visibility
-function toggleStops(routeId) {
-    const stopsList = document.getElementById(`stops-${routeId}`);
-    const button = event.target;
-    
-    stopsList.classList.toggle('active');
-    
-    if (stopsList.classList.contains('active')) {
-        button.textContent = 'Hide Stops & Timeline ▲';
-    } else {
-        button.textContent = 'View Stops & Timeline ▼';
-    }
 }

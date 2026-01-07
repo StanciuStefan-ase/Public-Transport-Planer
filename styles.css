@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: rgb(230, 233, 228);
     min-height: 100vh;
     padding: 20px;
 }
@@ -21,7 +21,7 @@ body {
 }
 
 .header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: rgb(74, 153, 9);
     color: white;
     padding: 30px;
     text-align: center;
@@ -77,9 +77,69 @@ body {
     transition: all 0.3s;
 }
 
+.location-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: all 0.3s;
+    background: white;
+    cursor: pointer;
+}
+
+.location-input-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.location-input-wrapper .location-select {
+    flex: 1;
+}
+
+.btn-location {
+    padding: 12px 20px;
+    background: rgb(74, 153, 9);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgb(74, 153, 9);
+}
+
+.btn-location:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgb(74, 153, 9);
+}
+
+.btn-location:active {
+    transform: translateY(0);
+}
+
+.btn-location:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.location-select:focus {
+    outline: none;
+    border-color: rgb(74, 153, 9);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.location-select option {
+    padding: 10px;
+}
+
 .input-wrapper input:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: rgb(74, 153, 9);
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
@@ -89,7 +149,7 @@ body {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    color: #667eea;
+    color: rgb(74, 153, 9);
     font-size: 20px;
     transition: transform 0.2s;
 }
@@ -124,7 +184,7 @@ body {
 .btn-search {
     width: 100%;
     padding: 15px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: rgb(74, 153, 9);
     color: white;
     border: none;
     border-radius: 10px;
@@ -142,7 +202,7 @@ body {
     transform: translateY(0);
 }
 
-/* Canvas Section */
+/* canvas */
 .canvas-section {
     padding: 30px;
     background: #f8f9fa;
@@ -170,7 +230,7 @@ body {
     display: block;
 }
 
-/* Results Section */
+/* resu */
 .results-section {
     padding: 30px;
     display: none;
@@ -190,7 +250,7 @@ body {
 }
 
 .route-card:hover {
-    border-color: #667eea;
+    border-color: rgb(74, 153, 9);
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
 }
 
@@ -274,14 +334,14 @@ body {
     border-radius: 8px;
     font-size: 13px;
     font-weight: 600;
-    color: #667eea;
+    color: rgb(74, 153, 9);
     border: 1px solid #e0e0e0;
 }
 
 .stops-toggle {
     background: none;
     border: none;
-    color: #667eea;
+    color: rgb(74, 153, 9);
     font-weight: 600;
     cursor: pointer;
     font-size: 14px;
@@ -316,11 +376,11 @@ body {
 
 .stop-time {
     font-size: 13px;
-    color: #667eea;
+    color: rgb(74, 153, 9);
     font-weight: 600;
 }
 
-/* Video Section */
+/* video */
 .video-section {
     padding: 30px;
     background: #f8f9fa;
@@ -343,6 +403,15 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+.video-placeholder {
+    background: rgb(74, 153, 9);
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
 .video-caption {
     margin-top: 10px;
     font-size: 14px;
@@ -350,7 +419,7 @@ body {
     text-align: center;
 }
 
-/* Loading */
+/* loading */
 .loading {
     text-align: center;
     padding: 40px;
@@ -363,7 +432,7 @@ body {
 
 .spinner {
     border: 4px solid #f3f3f3;
-    border-top: 4px solid #667eea;
+    border-top: 4px solid rgb(74, 153, 9);
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -376,7 +445,6 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-/* Responsive Design */
 @media (max-width: 600px) {
     body {
         padding: 0;
