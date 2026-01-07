@@ -274,7 +274,7 @@ function useMyLocation() {
                 
               
                 const distanceKm = nearest.distance.toFixed(2);
-                alert(`✅ Nearest station: ${nearest.location.name} (${distanceKm} km away)`);
+                alert(`Nearest station: ${nearest.location.name} (${distanceKm} km away)`);
                 
                 playNotificationSound('success');
             } else {
@@ -284,7 +284,7 @@ function useMyLocation() {
             
             // re enable button
             button.disabled = false;
-            button.textContent = '📍 My Location';
+            button.textContent = 'My Location';
         },
         function(error) {
             console.error('Error getting location:', error);
@@ -310,7 +310,7 @@ function useMyLocation() {
             
             
             button.disabled = false;
-            button.textContent = '📍 My Location';
+            button.textContent = 'My Location';
         },
         {
             enableHighAccuracy: true,
@@ -407,7 +407,7 @@ function displayRoute(originKey, destKey) {
     let html = `
         <div style="padding: 20px; background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%); 
                     margin-bottom: 20px; border-radius: 15px; border-left: 5px solid #667eea;">
-            <h3 style="margin: 0 0 10px 0; color: #333;">📍 Planned Route</h3>
+            <h3 style="margin: 0 0 10px 0; color: #333;">Planned Route</h3>
             <div style="font-size: 16px; color: #555;">
                 <strong>From:</strong> ${originLoc.name} 
                 <span style="color: #667eea; margin: 0 10px;">→</span> 
